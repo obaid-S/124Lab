@@ -1,3 +1,5 @@
+#ifndef PATEINT_H
+#define PATEINT_H
 #include "Condition.h"
 
 class Patient {
@@ -20,3 +22,4 @@ class Patient {
 
         Condition get_condition();
 };
+#endif

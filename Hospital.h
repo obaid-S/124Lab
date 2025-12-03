@@ -1,7 +1,10 @@
+#ifndef HOSPITAL_H
+#define HOSPITAL_H
+
 #include <map>
 #include <queue>
-#include <Condition.h>
-#include <Patient.h>
+#include "Condition.h"
+#include "Patient.h"
 class Hospital {
     private: 
         std::priority_queue<Patient> queue;
@@ -27,6 +30,10 @@ class Hospital {
         void treat_patient();
         /**
          * Saves the current patient queue list to a CSV file
+         * 
+         * 
          */
         void save(std::string filename);
 };
+
+#endif
