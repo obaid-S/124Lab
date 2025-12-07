@@ -17,3 +17,7 @@ int Patient::get_id(){
 std::string Patient::get_name(){
     return name;
 };
+
+bool Patient::operator<(const Patient& other) const{
+    return this->condition < other.condition;
+};

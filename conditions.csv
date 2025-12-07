@@ -1,0 +1,11 @@
+name,priority
+heart_attack,1
+stroke,2
+allergic_reaction,3
+asthma_attack,3
+burn_injury,4
+fracture_leg,5
+broken_arm,6
+food_poisoning,6
+fever,7
+migraine,8

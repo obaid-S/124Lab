@@ -12,13 +12,26 @@ Condition::Condition(){
     condition="healthy";
 }
 
-bool Condition::operator<(Condition other){
+bool Condition::operator<(const Condition& other) const{
     if(this->priority==other.priority){
-        return this->time<other.time;
+        return this->time<other.time;       //if priority same, earlier time higher priority
     }
-    else if(this->priority<other.priority){
+    else if(this->priority>other.priority){ //if this priority number is larger, it is lower priority
         return true;
     }else{
         return false;
     }
 }
+
+std::string Condition::get_condition(){
+    return condition;
+};
+
+int Condition::get_priority(){
+    return priority;
+};
+
+std::string Condition::get_time(){
+    return time;
+};
+

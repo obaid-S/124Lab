@@ -5,6 +5,10 @@
 #include <queue>
 #include "Condition.h"
 #include "Patient.h"
+/**
+ * * @class Hospital
+ * @brief class to represent a hospital with a priority queue of patients, saves and loads from csv files, saves individual patient records to csv files
+ */
 class Hospital {
     private: 
         std::priority_queue<Patient> queue;
@@ -30,8 +34,6 @@ class Hospital {
         void treat_patient();
         /**
          * Saves the current patient queue list to a CSV file
-         * 
-         * 
          */
         void save(std::string filename);
 };

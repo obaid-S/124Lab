@@ -4,7 +4,7 @@
 #include <string>
 /**
  * * @class Condition
- * @brief class to represent a condition with its priority and time (YYYY-MM-DD HH:MM format).  
+ * @brief class to represent a condition with its priority and time (YYYY-MM-DD HH:MM format), used in priority queue
  */
 class Condition{
     private:    
@@ -26,8 +26,25 @@ class Condition{
         /**
          * Operator overload for condition, needed for priority queue
          * @param other other condition
+         * @return true if this condition has higher priority than other
          */
-        bool operator<(Condition other);
+        bool operator<(const Condition& other) const;
+
+        /**
+         * Get condition name
+         * @return condition name
+         */
+        std::string get_condition();
+        /**
+         * Get priority
+         * @return priority
+         */
+        int get_priority();
+        /**
+         * Get time
+         * @return time
+        */
+        std::string get_time(); 
 
 
 };
