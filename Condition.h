@@ -3,7 +3,7 @@
 #define CONDITION_H
 #include <string>
 /**
- * * @class Condition
+ * @class Condition
  * @brief class to represent a condition with its priority and time (YYYY-MM-DD HH:MM format), used in priority queue
  */
 class Condition{

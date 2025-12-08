@@ -14,7 +14,7 @@ Condition::Condition(){
 
 bool Condition::operator<(const Condition& other) const{
     if(this->priority==other.priority){
-        return this->time<other.time;       //if priority same, earlier time higher priority
+        return this->time>other.time;       //if priority same, earlier time higher priority
     }
     else if(this->priority>other.priority){ //if this priority number is larger, it is lower priority
         return true;
