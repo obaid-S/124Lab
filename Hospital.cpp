@@ -4,10 +4,8 @@
 #include <iostream>
 #include <vector>
 
-// ===============================
 // Helper trim function (simple)
-// ===============================
-static std::string trim(const std::string& s) {
+    std::string trim(const std::string& s) {
     size_t start = s.find_first_not_of(" \t\n\r");
     size_t end   = s.find_last_not_of(" \t\n\r");
 
@@ -15,14 +13,10 @@ static std::string trim(const std::string& s) {
     return s.substr(start, end - start + 1);
 }
 
-// ===============================
 // CONSTRUCTOR
-// ===============================
 Hospital::Hospital(std::string patient_file, std::string triage_file) 
 {
-    // ==========================
     // Load triage file
-    // ==========================
     std::ifstream triage(triage_file);
     if (!triage.is_open()) {
         std::cout << "Error opening triage file.\n";
@@ -41,10 +35,7 @@ Hospital::Hospital(std::string patient_file, std::string triage_file)
             triage_list[cond] = stoi(prio);
         }
     }
-
-    // ==========================
     // Load patient file
-    // ==========================
     std::ifstream patients(patient_file);
     if (!patients.is_open()) {
         std::cout << "Error opening patient file.\n";
@@ -71,10 +62,7 @@ Hospital::Hospital(std::string patient_file, std::string triage_file)
         add_patient(name, stoi(id), cond, t);
     }
 }
-
-// ===============================
 // ADD PATIENT
-// ===============================
 void Hospital::add_patient(std::string name, int id, std::string condition_name, std::string datetime)
 {
     int prio = triage_list[condition_name];
@@ -84,10 +72,7 @@ void Hospital::add_patient(std::string name, int id, std::string condition_name,
 
     // add to queue
     queue.push(p);
-
-    // ===============================
     // Write / append to patient file
-    // ===============================
     std::string filename = std::to_string(id) + ".csv";
 
     bool exists = std::ifstream(filename).good();
@@ -101,10 +86,7 @@ void Hospital::add_patient(std::string name, int id, std::string condition_name,
     out << condition_name << "," << datetime << ",false\n";
     out.close();
 }
-
-// ===============================
 // TREAT PATIENT
-// ===============================
 void Hospital::treat_patient()
 {
     if (queue.empty()) {
@@ -117,10 +99,7 @@ void Hospital::treat_patient()
 
     int id = p.get_id();
     std::string filename = std::to_string(id) + ".csv";
-
-    // ===============================
     // Read entire patient record
-    // ===============================
     std::ifstream in(filename);
     if (!in.is_open()) {
         std::cout << "Cannot open patient file.\n";
@@ -147,22 +126,15 @@ void Hospital::treat_patient()
 
         rows.back() = last;
     }
-
-    // ===============================
     // Rewrite file
-    // ===============================
     std::ofstream out(filename);
     for (size_t i = 0; i < rows.size(); i++) {
         out << rows[i] << "\n";
     }
     out.close();
 
-    std::cout << "Treated: " << p.get_name() << " (ID " << id << ")\n";
 }
-
-// ===============================
 // SAVE QUEUE TO CSV
-// ===============================
 void Hospital::save(std::string filename)
 {
     std::ofstream out(filename);
